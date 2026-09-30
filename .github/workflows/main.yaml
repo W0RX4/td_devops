@@ -1,5 +1,10 @@
 name: Hello World
 
+env:
+    NOM: "eneko"
+    PRENOM: "CORREIA"
+    EMAIL: "monsuperemail@gmail.com"
+
 on:
     push:
         branches: [ "master" ]
@@ -10,3 +15,15 @@ jobs:
         steps:
             - name: Hello World command
               run: echo "Hello World"
+    nom:
+        runs-on: ubunutu-latest
+        steps:
+            - name: Afficher nom
+              run: |
+                  echo "Nom : ${{ env.NOM }}"
+    prenom:
+        runs-on: ubunutu-latest
+        steps:
+            - name: Afficher prenom
+              run: |
+                  echo "Prenom : ${{ env.PRENOM }}"
