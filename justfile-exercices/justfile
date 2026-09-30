@@ -1,0 +1,47 @@
+# =====================================================================
+#  DevOps - Exercices justfile
+#  Lancer `just` (sans argument) pour afficher la liste des recettes.
+# =====================================================================
+
+# Charge automatiquement les variables d'un fichier .env s'il existe
+set dotenv-load
+
+# Recette par défaut : liste les recettes disponibles
+[private]
+default:
+    @just --list --unsorted
+
+# ---------------------------------------------------------------------
+#  Exercice 1 - Hello world
+# ---------------------------------------------------------------------
+
+# Affiche "Hello world"
+hello:
+    @echo "Hello world"
+
+# ---------------------------------------------------------------------
+#  Exercice 3 - Workflow git : init -> status -> add -> commit -> log
+#  (placé avant l'exercice 2 car init-repo réutilise `init`)
+# ---------------------------------------------------------------------
+
+branch := "main"
+
+# Initialise un dépôt git dans le dossier courant
+init:
+    git init -b {{ branch }}
+
+# Affiche l'état du dépôt
+status:
+    git status
+
+# Indexe des fichiers (tous par défaut) : just add / just add a.txt b.txt
+add *files="-A":
+    git add {{ files }}
+
+# Crée un commit : just commit "Ajout de la fonctionnalité"
+commit msg:
+    git commit -m {{ quote(msg) }}
+
+# Affiche l'historique (10 derniers commits par défaut)
+log n="10":
+    git log --oneline --graph --decorate -n {{ n }}
