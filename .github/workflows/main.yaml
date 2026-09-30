@@ -27,3 +27,8 @@ jobs:
             - name: Afficher prenom
               run: |
                   echo "Prenom : ${{ env.PRENOM }}"
+    script: 
+        runs-on: ubuntu-latest
+        steps:
+            - name: script_python
+              run: python3 script.py
