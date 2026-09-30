@@ -16,13 +16,13 @@ jobs:
             - name: Hello World command
               run: echo "Hello World"
     nom:
-        runs-on: ubunutu-latest
+        runs-on: ubuntu-latest
         steps:
             - name: Afficher nom
               run: |
                   echo "Nom : ${{ env.NOM }}"
     prenom:
-        runs-on: ubunutu-latest
+        runs-on: ubuntu-latest
         steps:
             - name: Afficher prenom
               run: |
