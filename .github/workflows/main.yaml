@@ -30,5 +30,8 @@ jobs:
     script: 
         runs-on: ubuntu-latest
         steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+              
             - name: script_python
               run: python3 script.py
