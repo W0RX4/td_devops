@@ -18,8 +18,23 @@ jobs:
               uses: actions/upload-pages-artifact@v3
               with: 
                 path: '.'
-    deploy:
+    lint: 
+        runs-on: ubuntu-latest
         needs: build
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: install node
+              uses: actions/setup-node@v4
+              with:
+                node-version: 22
+            
+            - name: start linter
+              run: npx htmlhint index.html
+
+    deploy:
+        needs: [build, lint]
         runs-on: ubuntu-latest
         environment: 
             name: github-pages
