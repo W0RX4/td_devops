@@ -1,10 +1,5 @@
 name: Hello World
 
-env:
-    NOM: "eneko"
-    PRENOM: "CORREIA"
-    EMAIL: "monsuperemail@gmail.com"
-
 on:
     push:
         branches: [ "master" ]
@@ -20,13 +15,13 @@ jobs:
         steps:
             - name: Afficher nom
               run: |
-                  echo "Nom : ${{ env.NOM }}"
+                  echo "Nom : ${{ vars.NOM }}"
     prenom:
         runs-on: ubuntu-latest
         steps:
             - name: Afficher prenom
               run: |
-                  echo "Prenom : ${{ env.PRENOM }}"
+                  echo "Prenom : ${{ vars.PRENOM }}"
     script: 
         runs-on: ubuntu-latest
         steps:
@@ -34,4 +29,4 @@ jobs:
               uses: actions/checkout@v4
               
             - name: script_python
-              run: python3 script.py
+              run: python3 script.py    
